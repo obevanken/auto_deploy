@@ -5,7 +5,6 @@ import logging
 
 
 logging.basicConfig(level="INFO")
-
 app = Flask(__name__)
 
 @app.route('/push', methods=['POST'])
