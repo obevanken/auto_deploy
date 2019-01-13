@@ -1,7 +1,10 @@
 from flask import Flask, request, abort
 import os
 import json
+import logging
 
+
+logging.basicConfig(level="INFO")
 
 app = Flask(__name__)
 
@@ -14,19 +17,19 @@ def push_event():
         file_data = json.load(f)
     
     if file_data['repo_name'] != repo_name:
-        print('repositories do not match, check "repo_name" in file')
+        logging.warning('repositories do not match, check "repo_name" in file')
         return abort(500)
 
     if branch == file_data['branch']:
         path = file_data['path']
         os.chdir(path)
         if not file_data['commands']: 
-            print("Commands is empty") 
+            logging.warning("Commands is empty") 
             return abort(500)
         [os.system(command) for command in file_data['commands']]
     else:
-        print("Not this branch")
+        logging.warning("Not this branch")
         return abort(500)
     
-    print("OK")  
+    logging.info("OK")  
     return 'OK', 200
