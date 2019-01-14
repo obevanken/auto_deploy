@@ -2,6 +2,7 @@ from flask import Flask, request, abort
 import os
 import json
 import logging
+import subprocess
 
 
 logging.basicConfig(level="INFO")
@@ -26,8 +27,7 @@ def push_event():
             logging.warning("Commands is empty") 
             return abort(500)
         for command in file_data['commands']:
-            os.system(command)
-            logging.info(os.getcwd())
+            subprocess.check_call(command, shell=True)
     else:
         logging.warning("Not this branch")
         return abort(500)
