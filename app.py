@@ -5,9 +5,9 @@ import logging
 
 
 logging.basicConfig(level="INFO")
-app = Flask(__name__)
+application = Flask(__name__)
 
-@app.route('/push', methods=['POST'])
+@application.route('/push', methods=['POST'])
 def push_event():
     data = request.get_json()
     branch = data["ref"].split('/')[2]
