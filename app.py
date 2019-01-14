@@ -25,7 +25,9 @@ def push_event():
         if not file_data['commands']: 
             logging.warning("Commands is empty") 
             return abort(500)
-        [os.system(command) for command in file_data['commands']]
+        for command in file_data['commands']:
+            os.system(command)
+            logging.info(os.getcwd())
     else:
         logging.warning("Not this branch")
         return abort(500)
