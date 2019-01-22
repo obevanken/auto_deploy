@@ -42,8 +42,6 @@ def push_event():
     logging.info("OK")
 
     process = subprocess.call(file_data['path'])
-    for line in process.stdout:
-        print(line.decode().strip())
 
     return 'OK', 200
 #
