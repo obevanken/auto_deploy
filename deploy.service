@@ -1,0 +1,12 @@
+[Unit]
+Description=Gunicorn instance to serve auto_deploy
+After=network.target
+
+[Service]
+User=root
+Group=root
+WorkingDirectory=/path/to/project
+ExecStart=/bin/bash -c "/path/to/virtualenv/bin/gunicorn --bind 0.0.0.0:1337 wsgi"
+
+[Install]
+WantedBy=multi-user.target

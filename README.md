@@ -2,18 +2,20 @@
   Deploy for GitLab
 
 # Application
-  
-Create **labhook.json** file in project root :
-  
- ``` 
+
+Create **repo_settings.json** file in project root :
+
+ ```
  {
-    "repo_name": "Repository name",
-    "path": "path to the project",
-    "branch": "Name branch",
-    "commands": [
-        "youre command 1",
-        "youre command 2"
-    ]
-} 
+   "project_id": 1111111,
+   "repo_name": "deploy_test",
+   "token": "tokent_token_123",
+   "events": [
+     "Push Hook",
+     "Merge Hook"
+   ],
+   "branch": "master",
+   "path": "path/to/project/auto_deploy/commands.sh"
+ }
 ```
 install requirements: ```pip install -r requirements.txt```
