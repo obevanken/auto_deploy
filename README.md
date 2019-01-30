@@ -19,3 +19,5 @@ Create **repo_settings.json** file in project root :
  }
 ```
 install requirements: ```pip install -r requirements.txt```
+
+Created by obevanken and Blueberry_cat
